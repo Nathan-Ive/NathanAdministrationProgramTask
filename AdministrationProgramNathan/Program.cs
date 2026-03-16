@@ -10,6 +10,11 @@ namespace AdministrationProgramNathan
     {
         static void Main(string[] args)
         {
+
+            User user1 = new User("N", "Pmh 24", "123456789", "Gmail", 22);
+
+            user1.SayHello();
+
         }
     }
 }
