@@ -18,30 +18,59 @@ namespace AdministrationProgramNathan
         private string _homeAdress;
         private string _phoneNumber;
         private string _emailAdress;
+        private string _ageInput;
         private int _age;
 
 
-        public void AddUser() 
+
+        //The AddUser class will use getters and setters to only provide access to the User class
+        private void AddUser() 
+        {
+            UserAddEditInput();
+
+            Console.WriteLine($"New user information has been sent to be verified in the database.");
+            User newUser = new User(_name, _homeAdress, _phoneNumber, _emailAdress, _age);
+        }
+
+
+
+
+        private void UserAddEditInput() 
         {
             Console.Write($"Please insert a name: ");
-            Console.ReadLine();
-            Console.Clear();
-            Console.Write($"Please insert your adress: ");
-            Console.ReadLine();
-            Console.Clear();
-            Console.Write($"Please insert your phone number: ");
-            Console.ReadLine();
-            Console.Clear();
-            Console.Write($"Please insert your e-mail adress: ");
-            Console.ReadLine();
-            Console.Clear();
-            Console.Write($"Please insert your current age: ");
-            Console.ReadLine();
+            _name = Console.ReadLine();
             Console.Clear();
 
-            User newUser = new User(_name, _homeAdress, _phoneNumber, _emailAdress, _age);
+            Console.Write($"Please insert your adress: ");
+            _homeAdress = Console.ReadLine();
+            Console.Clear();
+
+            Console.Write($"Please insert your phone number: ");
+            _phoneNumber = Console.ReadLine();
+            Console.Clear();
+
+            Console.Write($"Please insert your e-mail adress: ");
+            _emailAdress = Console.ReadLine();
+            Console.Clear();
+
+            Console.Write($"Please insert your current age: ");
+            _ageInput = Console.ReadLine();
+            if (!Int32.TryParse(_ageInput, out _age))
+            {
+
+            }
+            else
+            {
+                Console.WriteLine($"Incorrect age input, try again.");
+
+            }
+            Console.Clear();
 
         }
 
     }
 }
+
+
+
+
