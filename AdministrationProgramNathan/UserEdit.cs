@@ -32,7 +32,7 @@ namespace AdministrationProgramNathan
             User newUser = new User(_name, _homeAdress, _phoneNumber, _emailAdress, _age);
         }
 
-
+    
         //The EditUser class will use getters and setters to only receive from, write to and provide access for the User class
         private void EditUser() 
         {
