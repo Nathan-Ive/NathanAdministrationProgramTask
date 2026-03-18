@@ -23,7 +23,7 @@ namespace AdministrationProgramNathan
 
 
 
-        //The AddUser class will use getters and setters to only provide access to the User class
+        //The AddUser class will use getters and setters to only write to and provide access to the User class
         private void AddUser() 
         {
             UserAddEditInput();
@@ -32,6 +32,16 @@ namespace AdministrationProgramNathan
             User newUser = new User(_name, _homeAdress, _phoneNumber, _emailAdress, _age);
         }
 
+
+        //The EditUser class will use getters and setters to only receive from, write to and provide access for the User class
+        private void EditUser() 
+        {
+            Console.WriteLine($"What user do you want to edit?");
+            Console.Write($"Input the user's ID number here: ");
+            Console.ReadLine();
+
+            UserAddEditInput();
+        }
 
 
 
