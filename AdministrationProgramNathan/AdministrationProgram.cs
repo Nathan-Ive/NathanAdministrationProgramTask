@@ -9,11 +9,15 @@ namespace AdministrationProgramNathan
     internal class AdministrationProgram
     {
         public void StartProgram() 
-        { 
-        
-        
+        {
+            NavigationCommands navigationCommands = new NavigationCommands();
+            UserDatabase userDatabase = new UserDatabase();
+            navigationCommands.StartingInput();
         }
 
-
+        private void EndProgram() 
+        {
+            DatabaseFileSaver databaseFileSaver = new DatabaseFileSaver();
+        }
     }
 }

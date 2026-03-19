@@ -43,9 +43,6 @@ namespace AdministrationProgramNathan
         private void SendUserInfoToDB() 
         {
             
-
-        
-        
         }
 
     }

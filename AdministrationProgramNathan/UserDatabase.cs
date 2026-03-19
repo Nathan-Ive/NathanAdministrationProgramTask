@@ -24,11 +24,34 @@ namespace AdministrationProgramNathan
 
     //When it comes to the removal, the reason for this is because UserEdit will tell User which User to remove,
     //and the User class will verify the existance of this data before telling the Database to delete the data that matches the request.
+
+    
+
     internal class UserDatabase
     {
 
+        public UserDatabase() 
+        {
+            Console.WriteLine($"Welcome to the User Administration Program");
+            Console.WriteLine();
+            Console.WriteLine($"1. Add new user");
+            Console.WriteLine($"2. Remove existing user");
+            Console.WriteLine($"3. Edit existing user");
+            Console.WriteLine($"4. View existing user");
+            Console.WriteLine($"5. Search by category");
+            Console.WriteLine($"6. Exit Program & Save Database");
+            Console.WriteLine();
+            Console.Write($"Input Field: ");
+        }
 
 
+        public List<User> userDB = new List<User>();
+
+
+        public void ReceiveUserInfo() 
+        {
+            
+        }
 
     }
 }

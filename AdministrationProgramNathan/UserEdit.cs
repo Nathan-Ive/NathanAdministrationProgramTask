@@ -26,7 +26,7 @@ namespace AdministrationProgramNathan
         //The AddUser class will use getters and setters to only write to and provide access to the User class
         private void AddUser() 
         {
-            UserAddEditInput();
+            UserInputFields();
 
             User newUser = new User(_name, _homeAdress, _phoneNumber, _emailAdress, _age);
             Console.WriteLine($"New user information has been sent to be verified in the database.");
@@ -40,7 +40,7 @@ namespace AdministrationProgramNathan
             Console.Write($"Input the user's ID number here: ");
             Console.ReadLine();
 
-            UserAddEditInput();
+            UserInputFields();
 
             User existingUser = new User(_name, _homeAdress, _phoneNumber, _emailAdress, _age);
             Console.WriteLine($"Updated user information has been sent to be verified in the database.");
@@ -49,7 +49,7 @@ namespace AdministrationProgramNathan
 
 
 
-        private void UserAddEditInput() 
+        private void UserInputFields() 
         {
             Console.Write($"Please insert a name: ");
             _name = Console.ReadLine();
