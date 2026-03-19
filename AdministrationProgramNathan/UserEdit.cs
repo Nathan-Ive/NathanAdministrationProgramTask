@@ -28,8 +28,8 @@ namespace AdministrationProgramNathan
         {
             UserAddEditInput();
 
-            Console.WriteLine($"New user information has been sent to be verified in the database.");
             User newUser = new User(_name, _homeAdress, _phoneNumber, _emailAdress, _age);
+            Console.WriteLine($"New user information has been sent to be verified in the database.");
         }
 
     
@@ -41,6 +41,10 @@ namespace AdministrationProgramNathan
             Console.ReadLine();
 
             UserAddEditInput();
+
+            User existingUser = new User(_name, _homeAdress, _phoneNumber, _emailAdress, _age);
+            Console.WriteLine($"Updated user information has been sent to be verified in the database.");
+
         }
 
 

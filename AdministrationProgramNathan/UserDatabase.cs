@@ -26,5 +26,9 @@ namespace AdministrationProgramNathan
     //and the User class will verify the existance of this data before telling the Database to delete the data that matches the request.
     internal class UserDatabase
     {
+
+
+
+
     }
 }

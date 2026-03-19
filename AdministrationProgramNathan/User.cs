@@ -32,11 +32,21 @@ namespace AdministrationProgramNathan
             Age = age;
         }
 
-        public void SayHello()
-        {
 
-            Console.WriteLine($"Hello, my name is {Name}");
+        private void VerifyUserInfo() 
+        { 
 
+        
+        
         }
+
+        private void SendUserInfoToDB() 
+        {
+            
+
+        
+        
+        }
+
     }
 }
