@@ -32,18 +32,10 @@ namespace AdministrationProgramNathan
 
         public UserDatabase() 
         {
-
-
         }
 
 
-        public List<User> userDB = new List<User>();
-
-
-        public void ReceiveUserInfo() 
-        {
-            
-        }
+        
 
     }
 }

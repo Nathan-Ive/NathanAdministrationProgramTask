@@ -89,19 +89,37 @@ namespace AdministrationProgramNathan
 
         //At the moment this is just an example for the function here. When the User and UserDatabase classes are done, this can be made.
 
-        //private void HandleAddUser()
-        //{
-        //    Console.WriteLine("\n--- Add New Customer ---");
+        private void HandleAddUser()
+        {
+            Console.WriteLine("\n--- Add New Customer ---");
 
-        //    string name = ("Enter name: ");
-        //    string address = ("Enter address: ");
-        //    string phoneNumber = ("Enter phone number: ");
-        //    int age = ("Enter age: ");
+            string name = PromptForName("Enter name: ");
+            string address = PromptForAddress("Enter address: ");
+            string phoneNumber = PromptForPhoneNumber("Enter phone number: ");
+            int age = PromptForAge("Enter age: ");
 
 
-        //    User newUser = new User(name, address, phoneNumber, age);
-        //    database.AddUser(newUser);
-        //}
+            User newUser = new User(name, address, phoneNumber, age);
+            //database.AddUser(newUser);
+        }
+
+
+        private string PromptForName(string prompt)
+        {
+            while (true)
+            {
+                Console.Write(prompt);
+                string input = Console.ReadLine();
+
+                if (User.IsValidName(input))
+                {
+                    return input;
+                }
+
+                Console.WriteLine("Invalid name. Names cannot be empty or contain numbers.");
+            }
+        }
+
 
     }
 }
