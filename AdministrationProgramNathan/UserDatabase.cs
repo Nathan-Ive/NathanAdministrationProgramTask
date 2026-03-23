@@ -32,16 +32,8 @@ namespace AdministrationProgramNathan
 
         public UserDatabase() 
         {
-            Console.WriteLine($"Welcome to the User Administration Program");
-            Console.WriteLine();
-            Console.WriteLine($"1. Add new user");
-            Console.WriteLine($"2. Remove existing user");
-            Console.WriteLine($"3. Edit existing user");
-            Console.WriteLine($"4. View existing user");
-            Console.WriteLine($"5. Search by category");
-            Console.WriteLine($"6. Exit Program & Save Database");
-            Console.WriteLine();
-            Console.Write($"Input Field: ");
+
+
         }
 
 
