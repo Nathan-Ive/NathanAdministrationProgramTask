@@ -29,13 +29,55 @@ namespace AdministrationProgramNathan
 
     internal class UserDatabase
     {
-
+        private List<User> userList;
         public UserDatabase() 
         {
+            userList = new List<User>();
         }
 
 
-        
+        //This is public since I want the Handler functions to access this.
+        public void AddUser(User user)
+        {
+            userList.Add(user);
+            Console.WriteLine($"\nUser '{user.Name}' has been added successfully.");
+        }
+
+        public void ViewAllUsers()
+        {
+            if (userList.Count == 0)
+            {
+                Console.WriteLine("\nNo users found in the database.");
+                return;
+            }
+
+            Console.WriteLine("\n===== User List =====");
+
+            // Using a for loop to have a "ID" number next to every customer.
+            for (int i = 0; i < userList.Count; i++)
+            {
+                Console.WriteLine($"\n--- User {"ID: 0" + (i + 1)} ---");
+                Console.WriteLine($"  Name:         {userList[i].Name}");
+                Console.WriteLine($"  Address:      {userList[i].Address}");
+                Console.WriteLine($"  Phone Number: {userList[i].PhoneNumber}");
+                Console.WriteLine($"  Age:          {userList[i].Age}");
+            }
+
+            Console.WriteLine("\n=========================");
+            Console.ReadLine();
+        }
+
+
+        private int GetUserCount()
+        {
+            return userList.Count;
+        }
+
+
+        private User GetUserAtIndex(int index)
+        {
+            return userList[index];
+        }
 
     }
 }

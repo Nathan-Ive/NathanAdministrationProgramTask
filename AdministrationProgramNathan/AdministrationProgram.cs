@@ -43,7 +43,7 @@ namespace AdministrationProgramNathan
                     case "2":
                     case "two":
                     case "view user":
-                        //database.ViewAllUsers();
+                        database.ViewAllUsers();
                         break;
                     case "3":
                     case "three":
@@ -108,7 +108,7 @@ namespace AdministrationProgramNathan
 
 
             User newUser = new User(name, address, phoneNumber, age);
-            //database.AddUser(newUser);
+            database.AddUser(newUser);
         }
 
 
