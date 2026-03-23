@@ -24,7 +24,18 @@ namespace AdministrationProgramNathan
 
     //When it comes to the removal, the reason for this is because UserEdit will tell User which User to remove,
     //and the User class will verify the existance of this data before telling the Database to delete the data that matches the request.
+
+    
+
     internal class UserDatabase
     {
+
+        public UserDatabase() 
+        {
+        }
+
+
+        
+
     }
 }
