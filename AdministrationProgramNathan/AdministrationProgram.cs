@@ -37,22 +37,22 @@ namespace AdministrationProgramNathan
                 {
                     case "1":
                     case "one":
-                    case "add customer":
-                        //HandleAddUser();
+                    case "add user":
+                        HandleAddUser();
                         break;
                     case "2":
                     case "two":
-                    case "view customers":
+                    case "view user":
                         //database.ViewAllUsers();
                         break;
                     case "3":
                     case "three":
-                    case "edit customer":
+                    case "edit users":
                         //HandleEditUser();
                         break;
                     case "4":
                     case "four":
-                    case "remove customer":
+                    case "remove user":
                         //HandleRemoveUser();
                         break;
                     case "5":
@@ -75,6 +75,13 @@ namespace AdministrationProgramNathan
             }
         }
 
+
+
+
+        //All private functions for this class go below here.
+
+
+
         private void DisplayMenu()
         {
             Console.WriteLine($"===== Main Menu =====");
@@ -91,10 +98,11 @@ namespace AdministrationProgramNathan
 
         private void HandleAddUser()
         {
-            Console.WriteLine("\n--- Add New Customer ---");
+            Console.Clear();
+            Console.WriteLine("\n--- Add New User ---");
 
             string name = PromptForName("Enter name: ");
-            string address = PromptForAddress("Enter address: ");
+            string address = PromptForAddress("Enter home address: ");
             string phoneNumber = PromptForPhoneNumber("Enter phone number: ");
             int age = PromptForAge("Enter age: ");
 
@@ -104,6 +112,8 @@ namespace AdministrationProgramNathan
         }
 
 
+
+        //For these prompts, every validity check 
         private string PromptForName(string prompt)
         {
             while (true)
@@ -120,6 +130,59 @@ namespace AdministrationProgramNathan
             }
         }
 
+        private string PromptForAddress(string prompt)
+        {
+            while (true)
+            {
+                Console.Write(prompt);
+                string input = Console.ReadLine();
+
+                if (User.IsValidAddress(input))
+                {
+                    return input;
+                }
+
+                Console.WriteLine("Invalid address. Address cannot be empty.");
+            }
+        }
+
+        private string PromptForPhoneNumber(string prompt)
+        {
+            while (true)
+            {
+                Console.Write(prompt);
+                string input = Console.ReadLine();
+
+                if (User.IsValidPhoneNumber(input))
+                {
+                    return input;
+                }
+
+                Console.WriteLine("Invalid phone number. Use only digits, spaces, dashes, or a leading +.");
+            }
+        }
+
+        private int PromptForAge(string prompt)
+        {
+            while (true)
+            {
+                Console.Write(prompt);
+                string input = Console.ReadLine();
+
+                if (!int.TryParse(input, out int age))
+                {
+                    Console.WriteLine("Invalid input. Please enter a number.");
+                    continue;
+                }
+
+                if (User.IsValidAge(age))
+                {
+                    return age;
+                }
+
+                Console.WriteLine("Invalid age. Age must be between 0 and 130.");
+            }
+        }
 
     }
 }

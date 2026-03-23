@@ -13,7 +13,11 @@ namespace AdministrationProgramNathan
     //The name can't have numbers or symbols in it
     //The Phone number can't be longer than a certain amount of characters
     //The age can't be below zero or above a certain amount of the highest recorded age.
-    //So, this class will be the only place 
+    //Address won't have a specific check since it needs both numbers and letters. 
+
+    //I also want this class to contain the checks to verify right and wrong input,
+        //so it will have a bunch of boolean functions that are going to be used other class functions.
+
     internal class User
     {
         //Getters and setters are both public, since I want the UserEdit function to be able to access them later.
@@ -29,12 +33,9 @@ namespace AdministrationProgramNathan
             Age = age;
         }
 
-        //I need this to happen before User gets saved to a list, therefore it has to be public static, since I want this to always be checked.
-        //This should be fine since it's just a boolean. 
-        //I'll be following the same logic for the other three input fields.
         public static bool IsValidName(string name)
         {
-            //For when someone inputs too many spaces in their name
+            //For when someone inputs nothing
             if (string.IsNullOrWhiteSpace(name))
             {
                 return false;
@@ -52,6 +53,7 @@ namespace AdministrationProgramNathan
             return true;
         }
 
+        //House Address requires both letters and numbers, so I'm leaving the input check simple.
         public static bool IsValidAddress(string address)
         {
             return !string.IsNullOrWhiteSpace(address);
@@ -87,10 +89,11 @@ namespace AdministrationProgramNathan
         }
 
 
-        //The most simple one, it'll only return as true if the age is between 0 and 150, and anything else will return as false.
+        //The most simple check, it'll only return as true if the age is between 0 and 130, and anything else will return as false.
+        //The oldest person alive was apperantly 122, so I don't want it to be too much higher than that.
         public static bool IsValidAge(int age)
         {
-            return age >= 0 && age <= 150;
+            return age >= 0 && age <= 130;
         }
 
     }
