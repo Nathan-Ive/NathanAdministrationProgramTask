@@ -53,31 +53,34 @@ namespace AdministrationProgramNathan
 
             Console.WriteLine("\n===== User List =====");
 
-            // Using a for loop to have a "ID" number next to every customer.
+            // Using a for loop to have a "ID" number next to every user.
+            // This way the user will know what to input when UserEdit is added.
             for (int i = 0; i < userList.Count; i++)
             {
-                Console.WriteLine($"\n--- User {"ID: 0" + (i + 1)} ---");
-                Console.WriteLine($"  Name:         {userList[i].Name}");
-                Console.WriteLine($"  Address:      {userList[i].Address}");
-                Console.WriteLine($"  Phone Number: {userList[i].PhoneNumber}");
-                Console.WriteLine($"  Age:          {userList[i].Age}");
+                Console.WriteLine($"\n--- User {"ID: " + (i + 1)} ---");
+                Console.WriteLine($"    Name:           {userList[i].Name}");
+                Console.WriteLine($"    Address:        {userList[i].Address}");
+                Console.WriteLine($"    Phone Number:   {userList[i].PhoneNumber}");
+                Console.WriteLine($"    Age:            {userList[i].Age}");
             }
 
             Console.WriteLine("\n=========================");
             Console.ReadLine();
         }
 
-
-        private int GetUserCount()
+        //These are public, since it's necessary for the UserEdit and UserRemove functions to know the "ID" of the user.
+        public int GetUserCount()
         {
             return userList.Count;
         }
 
 
-        private User GetUserAtIndex(int index)
+        public User GetUserAtIndex(int index)
         {
             return userList[index];
         }
+
+       
 
     }
 }

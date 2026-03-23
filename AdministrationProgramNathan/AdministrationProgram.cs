@@ -20,7 +20,7 @@ namespace AdministrationProgramNathan
         public void StartProgram()
         {
             Console.Clear();
-            Console.WriteLine($"Welcome to the Administration Program!");
+            Console.WriteLine("Welcome to the Administration Program!");
 
             bool isRunning = true;
 
@@ -38,21 +38,25 @@ namespace AdministrationProgramNathan
                     case "1":
                     case "one":
                     case "add user":
+                    case "add users":
                         HandleAddUser();
                         break;
                     case "2":
                     case "two":
                     case "view user":
+                    case "view users":
                         database.ViewAllUsers();
                         break;
                     case "3":
                     case "three":
+                    case "edit user":
                     case "edit users":
                         //HandleEditUser();
                         break;
                     case "4":
                     case "four":
                     case "remove user":
+                    case "remove users":
                         //HandleRemoveUser();
                         break;
                     case "5":
@@ -63,7 +67,7 @@ namespace AdministrationProgramNathan
                     case "6":
                     case "six":
                     case "exit":
-                        Console.WriteLine($"Goodbye!");
+                        Console.WriteLine("Goodbye!");
                         isRunning = false;
                         break;
                     default:
@@ -84,14 +88,14 @@ namespace AdministrationProgramNathan
 
         private void DisplayMenu()
         {
-            Console.WriteLine($"===== Main Menu =====");
-            Console.WriteLine($"1. Add User");
-            Console.WriteLine($"2. View Users");
-            Console.WriteLine($"3. Edit Users");
-            Console.WriteLine($"4. Remove User");
-            Console.WriteLine($"5. Search by Age");
-            Console.WriteLine($"6. Exit");
-            Console.Write($"\nInput an option: ");
+            Console.WriteLine("===== Main Menu =====");
+            Console.WriteLine("1. Add User");
+            Console.WriteLine("2. View Users");
+            Console.WriteLine("3. Edit Users");
+            Console.WriteLine("4. Remove User");
+            Console.WriteLine("5. Search by Age");
+            Console.WriteLine("6. Exit");
+            Console.Write("\nInput an option: ");
         }
 
         //At the moment this is just an example for the function here. When the User and UserDatabase classes are done, this can be made.
@@ -110,6 +114,70 @@ namespace AdministrationProgramNathan
             User newUser = new User(name, address, phoneNumber, age);
             database.AddUser(newUser);
         }
+
+        private void HandleEditUser()
+        {
+            Console.Clear();
+            Console.WriteLine("\n--- Add New User ---");
+            // TODO: — implement this method.
+            // General approach:
+            // 1. Check if the database is empty first (use database.GetUserCount())
+
+            int count = database.GetUserCount();
+            if (count == 0) 
+            {
+                Console.WriteLine("\nNo users found in the database.");
+                return;
+            }
+
+            // 2. Show all users so the person can pick one (database.ViewAllUsers())
+            database.ViewAllUsers();
+
+
+            // 3. Ask which customer number to edit
+            Console.WriteLine("Enter the ID number of the user you want to edit.");
+            Console.WriteLine("Edit User: ");
+            string input = Console.ReadLine();
+
+            // 4. Ask which field to edit (name, address, phone, age)
+            Console.WriteLine("Enter the aspect of the user you want to edit");
+            Console.WriteLine("\n---Name, Home Address, Phone Number, Age---");
+            Console.WriteLine("Change User: ");
+
+            // 5. Use the same PromptFor methods to get validated new input
+
+            switch (input.ToLower()) 
+            {
+                case "name":
+                    string name = PromptForName("Enter new name: ");
+                    
+                    break;
+                case "home address":
+                case "homeaddress":
+                    string address = PromptForAddress("Enter new address: ");
+                    break;
+                case "phone number":
+                case "phonenumber":
+                    string phoneNumber = PromptForPhoneNumber("Enter new phone number: ");
+                    break;
+                case "age":
+                    int age = PromptForAge("Enter new age: ");
+                    break;
+                default:
+                    Console.Clear();
+                    Console.WriteLine("Invalid input, please specify one of the provided aspects.");
+                    
+                    break;
+            
+            }
+
+            // 6. Use the User's public setters to update the value
+            // Something like: database.GetUserAtIndex(index).Name = newName;
+
+        }
+
+
+
 
 
 
