@@ -7,16 +7,9 @@ using System.Threading.Tasks;
 namespace AdministrationProgramNathan
 {
 
-    //This class dictates the user information, name, adress, contact info and age.
-    //Since the constructor is immediately called on when a user is made, I have to make sure that the program doesn't allow for wrong information for any of these.
-    
-    //The name can't have numbers or symbols in it
-    //The Phone number can't be longer than a certain amount of characters
-    //The age can't be below zero or above a certain amount of the highest recorded age.
-    //Address won't have a specific check since it needs both numbers and letters. 
-
-    //I also want this class to contain the checks to verify right and wrong input,
-        //so it will have a bunch of boolean functions that are going to be used other class functions.
+    //This class exists to store the functions that have the basic validity checks that are to be used in the AdminProgram class
+    //Beyond that, it basically shows the program what is required information for a new user to exist.
+    //Static is used here because I want these checks to exist before a new user is instantiated.
 
     internal class User
     {

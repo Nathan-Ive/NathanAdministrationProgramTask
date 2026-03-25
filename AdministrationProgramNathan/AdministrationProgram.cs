@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace AdministrationProgramNathan
 {
-    //Handles menu navigation and user interface tasks, instantiates all other classes as well.
+    //Handles menu navigation and user interface tasks.
+    //It instantiates the database so all the functions can access its features no matter what.
+    //Re-uses code as much as possible through private functions.
+    //This code doesn't handle database entries, that's what the "database." functions are for.
 
     internal class AdministrationProgram
     {
@@ -63,7 +66,7 @@ namespace AdministrationProgramNathan
                     case "5":
                     case "five":
                     case "search by age":
-                        //HandleSearchByAge();
+                        HandleSearchByAge();
                         break;
                     case "6":
                     case "six":
@@ -234,6 +237,17 @@ namespace AdministrationProgramNathan
                 Console.WriteLine($"Invalid choice. Please enter a number between 1 and {userCount}.");
             }
         }
+
+
+
+        //Unfinished feature.
+        private void HandleSearchByAge()
+        {
+            Console.WriteLine("\n[Search feature not yet implemented]");
+        }
+        //Unfinished feature.
+
+
 
 
 
