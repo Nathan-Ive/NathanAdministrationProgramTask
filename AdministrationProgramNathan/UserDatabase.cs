@@ -80,7 +80,14 @@ namespace AdministrationProgramNathan
             return userList[index];
         }
 
-       
+        public void RemoveUser(int index)
+        {
+            string removedName = userList[index].Name;
+            userList.RemoveAt(index);
+            Console.WriteLine($"\nCustomer '{removedName}' has been removed from the database.");
+        }
+
+
 
     }
 }

@@ -46,6 +46,7 @@ namespace AdministrationProgramNathan
                     case "view user":
                     case "view users":
                         database.ViewAllUsers();
+                        Console.Clear();
                         break;
                     case "3":
                     case "three":
@@ -57,7 +58,7 @@ namespace AdministrationProgramNathan
                     case "four":
                     case "remove user":
                     case "remove users":
-                        //HandleRemoveUser();
+                        HandleRemoveUser();
                         break;
                     case "5":
                     case "five":
@@ -178,10 +179,42 @@ namespace AdministrationProgramNathan
 
 
 
+        private void HandleRemoveUser()
+        {
+            if (database.GetUserCount() == 0)
+            {
+                Console.WriteLine("\nNo customers found in the database.");
+                return;
+            }
+
+            database.ViewAllUsers();
+            int userCount = database.GetUserCount();
+
+            while (true)
+            {
+                Console.Write("\nEnter the customer number to remove: ");
+                string input = Console.ReadLine();
+
+                if (!int.TryParse(input, out int choice))
+                {
+                    Console.WriteLine("Invalid input. Please enter a number.");
+                    continue;
+                }
+
+                if (choice >= 1 && choice <= userCount)
+                {
+                    //Subtract by 1 for the index number.
+                    int index = choice - 1;
+                    database.RemoveUser(index);
+                    return;
+                }
+                Console.WriteLine($"Invalid choice. Please enter a number between 1 and {userCount}.");
+            }
+        }
 
 
 
-        //For these prompts, every validity check 
+
         private string PromptForName(string prompt)
         {
             while (true)
