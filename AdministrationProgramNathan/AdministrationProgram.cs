@@ -52,7 +52,7 @@ namespace AdministrationProgramNathan
                     case "three":
                     case "edit user":
                     case "edit users":
-                        //HandleEditUser();
+                        HandleEditUser();
                         break;
                     case "4":
                     case "four":
@@ -120,61 +120,84 @@ namespace AdministrationProgramNathan
         {
             Console.Clear();
             Console.WriteLine("\n--- Add New User ---");
-            // TODO: — implement this method.
-            // General approach:
+            
             // 1. Check if the database is empty first (use database.GetUserCount())
-
             int count = database.GetUserCount();
-            if (count == 0) 
+            if (database.GetUserCount() == 0)
             {
                 Console.WriteLine("\nNo users found in the database.");
                 return;
             }
 
-            // 2. Show all users so the person can pick one (database.ViewAllUsers())
+            // 2. Show all users so the person can pick one
             database.ViewAllUsers();
 
 
-            // 3. Ask which customer number to edit
-            Console.WriteLine("Enter the ID number of the user you want to edit.");
-            Console.WriteLine("Edit User: ");
-            string input = Console.ReadLine();
+            // 3. Ask which user number to edit (Re-used code in the while loop, could probably be a private function)
+            int userCount = database.GetUserCount();
+            int index;
 
-            // 4. Ask which field to edit (name, address, phone, age)
-            Console.WriteLine("Enter the aspect of the user you want to edit");
-            Console.WriteLine("\n---Name, Home Address, Phone Number, Age---");
-            Console.WriteLine("Change User: ");
-
-            // 5. Use the same PromptFor methods to get validated new input
-
-            switch (input.ToLower()) 
+            while (true)
             {
-                case "name":
-                    string name = PromptForName("Enter new name: ");
-                    
+                Console.Write("\nEnter the user number to edit: ");
+                string input = Console.ReadLine();
+
+                if (!int.TryParse(input, out int choice))
+                {
+                    Console.WriteLine("Invalid input. Please enter a number.");
+                    continue;
+                }
+
+                if (choice >= 1 && choice <= userCount)
+                {
+                    //Subtract by 1 for the index number.
+                    index = choice - 1;
                     break;
-                case "home address":
-                case "homeaddress":
-                    string address = PromptForAddress("Enter new address: ");
-                    break;
-                case "phone number":
-                case "phonenumber":
-                    string phoneNumber = PromptForPhoneNumber("Enter new phone number: ");
-                    break;
-                case "age":
-                    int age = PromptForAge("Enter new age: ");
-                    break;
-                default:
-                    Console.Clear();
-                    Console.WriteLine("Invalid input, please specify one of the provided aspects.");
-                    
-                    break;
-            
+                }
+
+                Console.WriteLine($"Invalid choice. Please enter a number between 1 and {userCount}.");
             }
 
-            // 6. Use the User's public setters to update the value
-            // Something like: database.GetUserAtIndex(index).Name = newName;
 
+            // 4. Ask which field to edit (name, address, phone, age)
+            User userToEdit = database.GetUserAtIndex(index);
+
+            while (true)
+            {
+                Console.Write("\nWhich field would you like to edit? (Name / Address / Home Address / Phone / Phone Number / Age): ");
+                string field = Console.ReadLine().ToLower();
+
+                switch (field)
+                {
+                    case "name":
+                        userToEdit.Name = PromptForName("Enter new name: ");
+                        Console.WriteLine("\nName has been updated successfully.");
+                        return;
+
+                    case "address":
+                    case "home address":
+                        userToEdit.Address = PromptForAddress("Enter new address: ");
+                        Console.WriteLine("\nAddress has been updated successfully.");
+                        return;
+
+                    case "phone":
+                    case "number":
+                    case "phone number":
+                    case "phonenumber":
+                        userToEdit.PhoneNumber = PromptForPhoneNumber("Enter new phone number: ");
+                        Console.WriteLine("\nPhone number has been updated successfully.");
+                        return;
+
+                    case "age":
+                        userToEdit.Age = PromptForAge("Enter new age: ");
+                        Console.WriteLine("\nAge has been updated successfully.");
+                        return;
+
+                    default:
+                        Console.WriteLine("Invalid field. Please type one of the provided options exactly as shown.");
+                        break;
+                }
+            }
         }
 
 
@@ -183,7 +206,7 @@ namespace AdministrationProgramNathan
         {
             if (database.GetUserCount() == 0)
             {
-                Console.WriteLine("\nNo customers found in the database.");
+                Console.WriteLine("\nNo users found in the database.");
                 return;
             }
 
@@ -192,7 +215,7 @@ namespace AdministrationProgramNathan
 
             while (true)
             {
-                Console.Write("\nEnter the customer number to remove: ");
+                Console.Write("\nEnter the user number to remove: ");
                 string input = Console.ReadLine();
 
                 if (!int.TryParse(input, out int choice))

@@ -84,7 +84,7 @@ namespace AdministrationProgramNathan
         {
             string removedName = userList[index].Name;
             userList.RemoveAt(index);
-            Console.WriteLine($"\nCustomer '{removedName}' has been removed from the database.");
+            Console.WriteLine($"\User '{removedName}' has been removed from the database.");
         }
 
 
